@@ -37,4 +37,6 @@ RESOURCES += \
   resources.qrc
 
 DISTFILES += \
+  Auth.json \
+  DATA.json \
   icon.ico

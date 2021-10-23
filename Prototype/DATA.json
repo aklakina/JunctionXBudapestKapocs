@@ -1,0 +1,48 @@
+{
+  "Mentors": {
+    "Mentor1": {
+      "Mentored": [
+        "Unemployed1",
+        "Unemployed2"
+      ],
+      "Companies" : {
+        "Postion1": [
+          "ID1",
+          "ID2"
+          ],
+        "Position2": [
+          "ID1",
+          "ID3"
+          ]
+      },
+      "Description": "Hello, I'm mentor1 and I have 2 mentored already who are very happy to have me!"
+    }
+  },
+  "Companies": {
+    "ID1": {
+      "positions": {
+        "Programmer": {
+          "Mentors" : [
+            "Mentor1",
+            "Mentor2"
+          ],
+          "Requisites" : [
+            "2 years of mentoredness",
+            "High-school certificate"
+          ]
+        },
+        "Assistant": [
+          "Mentor1",
+          "Mentor3"
+        ],
+        "R1": [
+          "Mentor4"
+        ]
+      },
+      "Address":"A postal code, Some city, a typic street, the usual house"
+    }
+  },
+  "Unemployeds" : {
+    
+  }
+}
