@@ -19,6 +19,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    static unsigned short getState();
+
 private slots:
     void on_pushButton_2_clicked();
 
