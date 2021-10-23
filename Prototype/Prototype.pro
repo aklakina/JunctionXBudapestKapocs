@@ -39,4 +39,8 @@ RESOURCES += \
 DISTFILES += \
   Auth.json \
   DATA.json \
-  icon.ico
+  icon.ico \
+  views/Mentor_view1.png \
+  views/Mentor_view2.png \
+  views/company_view.png \
+  views/unemployed_view.png
