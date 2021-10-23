@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
             break;
         }
         QString pwd = QInputDialog::getText(this, tr("Login"),
-                                     tr("Password"), QLineEdit::Password,
+                                     tr("Password: "), QLineEdit::Password,
                                      QDir::home().dirName(), &ok);
         if (ok && !pwd.isEmpty()) {
         } else {
@@ -36,7 +36,16 @@ MainWindow::MainWindow(QWidget *parent)
                                            QMessageBox::Ok);
         }
     }
+
+    QFile f("./companies");
+    if (f.open(QIODevice::ReadOnly)) {
+        QTextStream stream(&f);
+        companies= new json(json::parse(stream.readAll().toStdString()));
+    }
+
 }
+
+json* MainWindow::companies=nullptr;
 
 MainWindow::~MainWindow()
 {

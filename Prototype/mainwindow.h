@@ -6,6 +6,10 @@
 #include <QInputDialog>
 #include <QDir>
 #include <QMessageBox>
+#include "json.hpp"
+
+
+using json=nlohmann::json;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,6 +30,7 @@ private slots:
 
 private:
     static unsigned short state;
+    static json* companies;
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
