@@ -22,7 +22,7 @@ class Auth : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit Auth(QWidget *parent = nullptr);
+    Auth(bool remote=false,QWidget *parent = nullptr);
     ~Auth();
 
     static unsigned short getstate();

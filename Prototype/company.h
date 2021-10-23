@@ -25,10 +25,13 @@ public:
 private slots:
     void on_treeWidget_itemClicked(QTreeWidgetItem *item, int column);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::Company *ui;
     static json* data_file;
     static json* big_data;
+    void LoadDataAgain();
 };
 
 #endif // COMPANY_H

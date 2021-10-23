@@ -1,17 +1,20 @@
 ﻿#include "auth.h"
 #include "ui_auth.h"
 
-Auth::Auth(QWidget *parent) :
+Auth::Auth(bool remote,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Auth)
 {
     ui->setupUi(this);
-    QFile f(QCoreApplication::applicationDirPath()+"/Auth.json");
-    if (f.open(QIODevice::ReadOnly)) {
-        QTextStream stream(&f);
-        auth_file= new json(json::parse(stream.readAll().toStdString()));
+
+    if (!remote) {
+        QFile f(QCoreApplication::applicationDirPath()+"/Auth.json");
+        if (f.open(QIODevice::ReadOnly)) {
+            QTextStream stream(&f);
+            auth_file= new json(json::parse(stream.readAll().toStdString()));
+        }
+        f.close();
     }
-    f.close();
 }
 
 Auth::~Auth()
