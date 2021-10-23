@@ -1,19 +1,19 @@
 {
   "Mentors": {
-    "Mentor1": {
+    "M2": {
       "Mentored": [
         "Unemployed1",
         "Unemployed2"
       ],
-      "Companies" : {
-        "Postion1": [
+      "Companies": {
+        "Programmer": [
           "ID1",
           "ID2"
-          ],
-        "Position2": [
+        ],
+        "Assistant": [
           "ID1",
           "ID3"
-          ]
+        ]
       },
       "Description": "Hello, I'm mentor1 and I have 2 mentored already who are very happy to have me!"
     }
@@ -22,27 +22,54 @@
     "ID1": {
       "positions": {
         "Programmer": {
-          "Mentors" : [
+          "Mentors": [
             "Mentor1",
-            "Mentor2"
+            "M2"
           ],
-          "Requisites" : [
+          "Requisites": [
             "2 years of mentoredness",
             "High-school certificate"
           ]
         },
-        "Assistant": [
-          "Mentor1",
-          "Mentor3"
-        ],
-        "R1": [
-          "Mentor4"
-        ]
+        "Assistant": {
+	  "Mentors": [
+            "M2",
+            "Mentor3"
+	    ],
+	   "Requisites": [
+            ]
+        },
+        "R1": {
+	  "Mentors": [
+            "Mentor4"
+	  ],
+	  "Requisites": [
+          ]
+        }
       },
-      "Address":"A postal code, Some city, a typic street, the usual house"
+      "Address": "A postal code, Some city, a typic street, the usual house"
     }
   },
-  "Unemployeds" : {
-    
+  "Unemployed": {
+    "Unemployed1": {
+    "Skills": [
+      {
+        "Skill_name": "Using hammer",
+        "Skill_type": "job_skill"
+      },
+      {
+        "Skill_name": "good counting",
+        "Skill_type": "basic_skill"
+      }
+    ],
+    "Studies": [
+      "Primary school of Transylvannia",
+      "Highschool but only 4 years"
+    ],
+    "workexperiences": [
+      "Coffeshop of the vampires",
+      "Taxi driver"
+    ]
+    }
   }
 }

@@ -18,20 +18,20 @@ Auth::~Auth()
 {
     delete ui;
 }
-
+QString Auth::username="";
 json* Auth::auth_file=nullptr;
 
 void Auth::on_pushButton_clicked()
 {
     auto temp=auth_file->find("Users").value();
     auto pwd=QMessageAuthenticationCode::hash(QByteArray(ui->lineEdit_pwd->text().toStdString().c_str()), QByteArray(((std::string)(temp.find("key").value())).c_str()), QCryptographicHash::Sha256).toHex();
-    qDebug()<<pwd;
     if (!temp.contains(ui->lineEdit_usr->text().toStdString())) {
         goto noSuchUser;
     }
     if (temp.find(ui->lineEdit_usr->text().toStdString()).value()[0]==pwd.toStdString()) {
         state=((unsigned short)(temp.find(ui->lineEdit_usr->text().toStdString()).value()[1]));
         this->hide();
+        username=ui->lineEdit_usr->text();
         if (state==1) {
             next_ui=new Mentor(this);
         } else if (state==2) {
@@ -77,3 +77,27 @@ void Auth::on_pushButton_2_clicked()
     }
 }
 
+std::vector<QTreeWidgetItem*>* Auth::LoadData(json& data,QTreeWidgetItem *root) {
+    if (data.empty()) return nullptr;
+    if (root==nullptr) {
+        std::vector<QTreeWidgetItem*>* temp=new std::vector<QTreeWidgetItem*>();
+        for (auto i:data.items()) {
+            temp->push_back(new QTreeWidgetItem(root));
+            temp->at(temp->size()-1)->setText(0,QString::fromStdString(i.key()));
+            LoadData(i.value(),temp->at(temp->size()-1));
+        }
+        return temp;
+    } else {
+        for (auto i:data.items()) {
+            auto temp=new QTreeWidgetItem(root);
+            if (!(i.value().is_array() || i.value().is_object())) {
+                temp->setText(0,QString::fromStdString(i.value()));
+            } else {
+                temp->setText(0,QString::fromStdString(i.key()));
+            }
+            if (i.value().is_array() || i.value().is_object()) {
+                LoadData(i.value(),temp);
+            }
+        }
+    }
+}

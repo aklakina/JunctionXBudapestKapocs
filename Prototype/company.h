@@ -1,8 +1,15 @@
-#ifndef COMPANY_H
+﻿#ifndef COMPANY_H
 #define COMPANY_H
 
 #include <QMainWindow>
 
+#include <QFile>
+#include <QMessageBox>
+#include "./json.hpp"
+#include <QTreeWidget>
+
+
+using json=nlohmann::json;
 namespace Ui {
 class Company;
 }
@@ -15,8 +22,13 @@ public:
     explicit Company(QWidget *parent = nullptr);
     ~Company();
 
+private slots:
+    void on_treeWidget_itemClicked(QTreeWidgetItem *item, int column);
+
 private:
     Ui::Company *ui;
+    static json* data_file;
+    static json* big_data;
 };
 
 #endif // COMPANY_H
