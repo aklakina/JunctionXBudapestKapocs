@@ -1,12 +1,16 @@
-#include "mainwindow.h"
+﻿#include "mentor.h"
+#include "unemployed.h"
+#include "company.h"
+#include "auth.h"
 
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    if (w.getState()==0) return 0;
-    w.show();
+    Auth login;
+    login.show();
     return a.exec();
+    auto state=login.getstate();
+    if (state==0) return 0;
 }
